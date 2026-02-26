@@ -24,6 +24,7 @@ This project demonstrates how replacing eager GPU operations with a **single cus
 
 
 
+
 ##  Technical Architecture & Pipeline
 The project implements a full-stack integration:
 1. **Python Layer**: High-level tensor API for seamless integration.
@@ -32,7 +33,7 @@ The project implements a full-stack integration:
 4. **GPU SMs**: Optimized execution across CUDA Streaming Multiprocessors.
 
 <p align="center">
-  <img src="images/architecture_diagram.png" width="800">
+  <img width="1536" height="1024" alt="architechure_daigram" src="https://github.com/user-attachments/assets/2cdb8db4-5f74-4a2c-829b-c13239ae2f64" width="800">
 </p>
 
 ##  Why Not `torch.compile`?
