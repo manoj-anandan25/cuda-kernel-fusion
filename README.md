@@ -67,3 +67,8 @@ python setup.py install
 
 # Run performance benchmark
 python scripts/benchmark.py
+```
+---
+<p align="center">
+  <i>Developed by Manoj Anandan</i>
+</p>
