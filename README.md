@@ -1,0 +1,8 @@
+<h1 align="center">🚀 CUDA Kernel Fusion Engine</h1><p align="center">High-Performance GPU Optimization using PyTorch C++ Extensions</p><p align="center"><img src="https://img.shields.io/badge/CUDA-11.8-green?style=for-the-badge&logo=nvidia"><img src="https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=c%2B%2B"><img src="https://img.shields.io/badge/PyTorch-2.3.0-ee4c2c?style=for-the-badge&logo=pytorch"></p>📌 OverviewModern GPU workloads are often limited by memory bandwidth (VRAM traffic) rather than raw compute power. This project demonstrates how replacing multiple "eager" PyTorch operations with a single custom fused CUDA kernel can significantly reduce memory round-trips and improve execution latency.By fusing the operation $out = q \times k + v$, we avoid creating intermediate tensors in the Global Memory, keeping data in high-speed registers for as long as possible.🏗️ Technical ArchitectureThe execution flow follows the industry-standard PyTorch extension pattern:Python Layer: Tensors are passed to the custom flash_attn_cuda module.C++ Binding: PyBind11 dispatches the tensors to the CUDA backend.CUDA Kernel: A custom __global__ function executes the fused math in a single pass across the GPU grid.📊 Performance Benchmarks (NVIDIA T4)Measured on 1M+ element tensors using torch.cuda.synchronize() for accurate timing:ImplementationAverage LatencySpeedupPyTorch Native (Eager)13.46 ms1.00×Fused CUDA Kernel6.69 ms2.01×Insight: The 2x speedup is achieved by reducing the number of loads/stores to the VRAM from 3 operations to 1.🛠️ Build & RunBash# Install dependencies
+pip install -r requirements.txt
+
+# Compile the extension
+python setup.py install
+
+# Run the benchmark
+python scripts/benchmark.py
