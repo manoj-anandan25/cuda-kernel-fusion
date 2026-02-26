@@ -1,0 +1,9 @@
+# Core Frameworks
+torch==2.3.0+cu118
+torchvision==0.18.0+cu118
+torchaudio==2.3.0+cu118
+
+# Helpers and Build Tools
+numpy
+einops
+ninja

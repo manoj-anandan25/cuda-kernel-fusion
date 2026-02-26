@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C++ build artifacts
+build/
+dist/
+*.so
+*.egg-info/
+.gradio/
+
+# PyTorch Extension caches
+/root/.cache/torch_extensions/
